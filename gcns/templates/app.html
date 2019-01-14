@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Web-based Geodetic Control Network System</title>
+
+    <!-- GC -->
+
+<style type="text/css">
+p {
+    margin:5px;
+}
+.settings {
+    background-image:url(/static/shared/icons/fam/folder_wrench.png);
+}
+.nav {
+    background-image:url(/static/shared/icons/fam/folder_go.png);
+}
+.info {
+    background-image:url(/static/shared/icons/fam/information.png);
+}
+</style>
+<!-- styles -->
+<link rel="stylesheet" type="text/css" href="/static/resources/css/ext-all-gray.css" />
+<link rel="stylesheet" href="/static/dist/leaflet.css" />
+<link rel="stylesheet" href="/static/dist/frostmap.css" />
+
+<!-- javascript dependencies -->   
+<script type="text/javascript" src="/static/ext-all.js"></script>
+<script type="text/javascript" src="/static/ext-theme-gray.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="/static/dist/leaflet.js"></script>
+<script type="text/javascript" src="/static/dist/leaflet.ajax.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="/static/js/dust-full.js"></script>
+<script src="/static/js/LStyledTopojson.js"></script>
+
+<!--script type="text/javascript" src="shared/options-toolbar.js"></script-->
+<script type="text/javascript" src="/static/js/app.js"></script>
+<script type="text/javascript" src="/static/js/map_actions.js"></script>
+   
+</head>
+<body>
+
+    <!-- use class="x-hide-display" to prevent a brief flicker of the content -->
+    <!--div id="search-form" class="x-hide-display">
+
+    <div id="search-form2" class="x-hide-display"-->
+        
+    </div>
+    <div id="northdiv">
+        <div class="satimage">
+            <div class="fireimage">
+                <div class="topcont">
+                    <div class="logobox">
+                        <!--a target="new" href="http://www.lands.go.ke/"><img alt="KENYA" width="153" height="53" class="kenya" src="/static/dist/images/kenya.png"></a-->
+                    </div>
+                    <h1 class="topheader">Web-based Geodetic Control Network System</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="toolbar"></div>
+    </div>
+
+    <div id="socialdiv" class="x-hide-display">
+
+       
+
+
+        <br><br>
+
+        <div class="g-plus" data-action="share" data-annotation="bubble" data-height="24"></div>
+
+        <br><br>
+        
+
+    </div>
+    
+    <div id="map">
+           
+    </div>
+    <script src="/static/js/geomap.js"></script>
+
+    <div id="props-panel" class="x-hide-display" style="width:200px;height:200px;overflow:hidden;">
+    </div>
+    <div id="south" class="x-hide-display">
+        <p>south - generally for informational stuff, also could be for status bar</p>
+    </div>
+</body>
+</html>
