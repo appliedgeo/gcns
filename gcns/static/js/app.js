@@ -51,7 +51,7 @@ Ext.require(['*']);
 
         var formPanel = Ext.create('Ext.form.Panel', {
             frame: true,
-            title: 'UTM to Cassini',
+            //title: 'UTM to Cassini',
             width: 290,
             bodyPadding: 5,
 
@@ -79,7 +79,7 @@ Ext.require(['*']);
                 id: 'utm_n',
                 name:'utm_n',
                 allowBlank: false
-            }, {
+            }/*, {
                 xtype: 'textfield',
                 //anchor: '100%',            
                 fieldLabel: 'Cassini(X)',
@@ -97,7 +97,74 @@ Ext.require(['*']);
                 id: 'cassini_y',
                 name:'cassini_y',
                 allowBlank: false
-            }],
+            }*/],
+            buttons: [{
+                text: 'Convert',
+                handler: function(){
+                    this.up('form').getForm().isValid();
+                    
+                }
+            },{
+                text: 'Clear',
+                handler: function(){
+                    this.up('form').getForm().reset();
+
+                }
+            }
+
+            ]
+        });
+
+        // sheet corners
+        var sheetCorners = Ext.create('Ext.form.Panel', {
+            frame: true,
+            title: 'Sheet Corners',
+            width: 290,
+            bodyPadding: 5,
+
+            fieldDefaults: {
+                labelAlign: 'left',
+                labelWidth: 90,
+                anchor: '100%'
+            },
+
+            items: [ {
+                xtype: 'textfield',
+                //anchor: '100%',            
+                fieldLabel: '1. UTM(E)',
+                margin: "10 0 0 0",
+                //width: 310,
+                id: 'utm_e',
+                name:'utm_e',
+                allowBlank: false
+            }, {
+                xtype: 'textfield',
+                //anchor: '100%',            
+                fieldLabel: '1. UTM(N)',
+                margin: "10 0 0 0",
+                //width: 310,
+                id: 'utm_n',
+                name:'utm_n',
+                allowBlank: false
+            }/*, {
+                xtype: 'textfield',
+                //anchor: '100%',            
+                fieldLabel: 'Cassini(X)',
+                margin: "10 0 0 0",
+                //width: 310,
+                id: 'cassini_x',
+                name:'cassini_x',
+                allowBlank: false
+            }, {
+                xtype: 'textfield',
+                //anchor: '100%',            
+                fieldLabel: 'Cassini(Y)',
+                margin: "10 0 0 0",
+                //width: 310,
+                id: 'cassini_y',
+                name:'cassini_y',
+                allowBlank: false
+            }*/],
             buttons: [{
                 text: 'Convert',
                 handler: function(){
@@ -122,7 +189,7 @@ Ext.require(['*']);
 
         var formPanel2 = Ext.create('Ext.form.Panel', {
             frame: true,
-            title: 'Cassini to UTM',
+            //title: 'Cassini to UTM',
             width: 290,
             bodyPadding: 5,
 
@@ -192,7 +259,7 @@ Ext.require(['*']);
 
         var formPanel3 = Ext.create('Ext.form.Panel', {
             frame: true,
-            title: 'Geographic to Cassini',
+            //title: 'Geographic to Cassini',
             width: 290,
             bodyPadding: 5,
 
@@ -260,6 +327,23 @@ Ext.require(['*']);
         //formPanel3.render('search-form3');
 
 
+        var utm_panel = new Ext.Panel({
+                title: 'UTM to Cassini',
+                items:[formPanel]
+            });
+
+        var cassini_panel = new Ext.Panel({
+                title: 'Cassini to UTM',
+                items:[formPanel2]
+            });
+
+
+        var geog_panel = new Ext.Panel({
+                title: 'Geographic to Cassini',
+                items:[formPanel3]
+            });
+
+
         SearchPanel = new Ext.Panel({
             id: "searchpanelID",
             layout: 'border',
@@ -278,15 +362,16 @@ Ext.require(['*']);
                             region: 'west',
                             xtype: 'panel',
                             width: 300,
-                            minWidth: 200,
-                            height: 150, 
+                            //minWidth: 200,
+                            //height: 150, 
                             title: 'Convert Data',
-                            bodyPadding: 10,
+                            //bodyPadding: 10,
+                            layout:'accordion',
                             //margin: 10,
                             //contentEl: 'search-form'
-                            items: [formPanel, formPanel2, formPanel3]
+                            items: [utm_panel, cassini_panel, geog_panel]
 
-                        },
+                        }/*,
                         {
                             region: 'south',
                             xtype: 'panel',
@@ -300,7 +385,7 @@ Ext.require(['*']);
                             '<a href="'+vector_data+'</a><br>'+
                             '<a href="'+raster_data+'</a>'
 
-                        }
+                        }*/
             ]
         });
 

@@ -17,5 +17,6 @@ from django.contrib import admin
 
 urlpatterns = [
 	url(r'^$', 'gcns.views.home', name='home'),
+	url(r'^skpgeo/$', 'gcns.views.skpgeo'),
     url(r'^admin/', include(admin.site.urls)),
 ]
