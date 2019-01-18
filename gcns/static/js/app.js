@@ -1,16 +1,6 @@
 // some data used in the forms
 Ext.namespace('Ext.geodetic');
 
-Ext.geodetic.locations = [
-
-    ['Sigowet', 35.1108, -0.2981],
-    ['Ainamoi', 35.2752, -0.3012],
-    ['Belgut', 35.2690, -0.4106],
-    ['Kipkelion West', 35.3883, -0.1571],
-    ['Kipkelion East', 35.5367, -0.1645]
-
-];
-
 var LogoPanel, SearchPanel;
 
 // adding day-of-year to date object
@@ -49,12 +39,12 @@ Ext.require(['*']);
         Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
 
 
-        var formPanel = Ext.create('Ext.form.Panel', {
+        var utm_input = Ext.create('Ext.form.Panel', {
             frame: true,
-            //title: 'UTM to Cassini',
-            width: 290,
+            title: 'Input UTM',
+            width: 490,
             bodyPadding: 5,
-
+            margin: '0 0 20 0',
             fieldDefaults: {
                 labelAlign: 'left',
                 labelWidth: 90,
@@ -79,49 +69,19 @@ Ext.require(['*']);
                 id: 'utm_n',
                 name:'utm_n',
                 allowBlank: false
-            }/*, {
-                xtype: 'textfield',
-                //anchor: '100%',            
-                fieldLabel: 'Cassini(X)',
-                margin: "10 0 0 0",
-                //width: 310,
-                id: 'cassini_x',
-                name:'cassini_x',
-                allowBlank: false
-            }, {
-                xtype: 'textfield',
-                //anchor: '100%',            
-                fieldLabel: 'Cassini(Y)',
-                margin: "10 0 0 0",
-                //width: 310,
-                id: 'cassini_y',
-                name:'cassini_y',
-                allowBlank: false
-            }*/],
-            buttons: [{
-                text: 'Convert',
-                handler: function(){
-                    this.up('form').getForm().isValid();
-                    
-                }
-            },{
-                text: 'Clear',
-                handler: function(){
-                    this.up('form').getForm().reset();
-
-                }
-            }
+            }],
+            buttons: [
 
             ]
         });
 
-        // sheet corners
-        var sheetCorners = Ext.create('Ext.form.Panel', {
-            frame: true,
-            title: 'Sheet Corners',
-            width: 290,
-            bodyPadding: 5,
 
+        var cassini_out = Ext.create('Ext.form.Panel', {
+            frame: true,
+            title: 'Cassini Out',
+            width: 490,
+            bodyPadding: 5,
+            margin: '20 0 0 0',
             fieldDefaults: {
                 labelAlign: 'left',
                 labelWidth: 90,
@@ -131,29 +91,11 @@ Ext.require(['*']);
             items: [ {
                 xtype: 'textfield',
                 //anchor: '100%',            
-                fieldLabel: '1. UTM(E)',
-                margin: "10 0 0 0",
-                //width: 310,
-                id: 'utm_e',
-                name:'utm_e',
-                allowBlank: false
-            }, {
-                xtype: 'textfield',
-                //anchor: '100%',            
-                fieldLabel: '1. UTM(N)',
-                margin: "10 0 0 0",
-                //width: 310,
-                id: 'utm_n',
-                name:'utm_n',
-                allowBlank: false
-            }/*, {
-                xtype: 'textfield',
-                //anchor: '100%',            
                 fieldLabel: 'Cassini(X)',
                 margin: "10 0 0 0",
                 //width: 310,
-                id: 'cassini_x',
-                name:'cassini_x',
+                id: 'out_cassini_x',
+                name:'out_cassini_x',
                 allowBlank: false
             }, {
                 xtype: 'textfield',
@@ -161,36 +103,217 @@ Ext.require(['*']);
                 fieldLabel: 'Cassini(Y)',
                 margin: "10 0 0 0",
                 //width: 310,
-                id: 'cassini_y',
-                name:'cassini_y',
+                id: 'out_cassini_y',
+                name:'out_cassini_y',
                 allowBlank: false
-            }*/],
-            buttons: [{
-                text: 'Convert',
-                handler: function(){
-                    this.up('form').getForm().isValid();
-                    
+            }],
+            buttons: [
+                        {
+                    text: 'Convert to Cassini'
+                },{
+                    text: 'Clear'
                 }
-            },{
-                text: 'Clear',
-                handler: function(){
-                    this.up('form').getForm().reset();
-
-                }
-            }
 
             ]
         });
 
-        //formPanel.render('search-form');
+        // sheet corners
+        var corner1_utm = Ext.create('Ext.form.Panel', {
+            frame: true,
+            labelAlign: 'top',
+            title: 'Sheet Corner 1',
+            bodyStyle:'padding:5px',
+            width: 490,
+            //defaults: {width: 230},
+            items: [{
+                layout:'column',
+                border:true,
+                items:[{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (E)',
+                        name: '1_utm_e',
+                        anchor:'95%'
+                    }, {
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (X)',
+                        name: '1_cassini_x',
+                        anchor:'95%'
+                    }]
+                },{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (N)',
+                        name: '1_utm_n',
+                        anchor:'95%'
+                    },{
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (Y)',
+                        name: '1_cassini_y',
+                        anchor:'95%'
+                        }]
+                    }]
+                }],
+            buttons: [
+
+            ]
+        });
+
+        var corner2_utm = Ext.create('Ext.form.Panel', {
+            frame: true,
+            labelAlign: 'top',
+            title: 'Sheet Corner 2',
+            bodyStyle:'padding:5px',
+            width: 490,
+            //defaults: {width: 230},
+            items: [{
+                layout:'column',
+                border:true,
+                items:[{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (E)',
+                        name: '2_utm_e',
+                        anchor:'95%'
+                    }, {
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (X)',
+                        name: '2_cassini_x',
+                        anchor:'95%'
+                    }]
+                },{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (N)',
+                        name: '2_utm_n',
+                        anchor:'95%'
+                    },{
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (Y)',
+                        name: '2_cassini_y',
+                        anchor:'95%'
+                        }]
+                    }]
+                }],
+            buttons: [
+
+            ]
+        });
+
+        
+        var corner3_utm = Ext.create('Ext.form.Panel', {
+            frame: true,
+            labelAlign: 'top',
+            title: 'Sheet Corner 3',
+            bodyStyle:'padding:5px',
+            width: 490,
+            //defaults: {width: 230},
+            items: [{
+                layout:'column',
+                border:true,
+                items:[{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (E)',
+                        name: '3_utm_e',
+                        anchor:'95%'
+                    }, {
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (X)',
+                        name: '3_cassini_x',
+                        anchor:'95%'
+                    }]
+                },{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (N)',
+                        name: '3_utm_n',
+                        anchor:'95%'
+                    },{
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (Y)',
+                        name: '3_cassini_y',
+                        anchor:'95%'
+                        }]
+                    }]
+                }],
+            buttons: [
+
+            ]
+        });
 
 
-        // form2
+        var corner4_utm = Ext.create('Ext.form.Panel', {
+            frame: true,
+            labelAlign: 'top',
+            title: 'Sheet Corner 4',
+            bodyStyle:'padding:5px',
+            width: 490,
+            //defaults: {width: 230},
+            items: [{
+                layout:'column',
+                border:true,
+                items:[{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (E)',
+                        name: '4_utm_e',
+                        anchor:'95%'
+                    }, {
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (X)',
+                        name: '4_cassini_x',
+                        anchor:'95%'
+                    }]
+                },{
+                    columnWidth:.5,
+                    layout: 'form',
+                    border:false,
+                    items: [{
+                        xtype:'textfield',
+                        fieldLabel: 'UTM (N)',
+                        name: '4_utm_n',
+                        anchor:'95%'
+                    },{
+                        xtype:'textfield',
+                        fieldLabel: 'CASSINI (Y)',
+                        name: '4_cassini_y',
+                        anchor:'95%'
+                        }]
+                    }]
+                }],
+            buttons: [
 
-        var formPanel2 = Ext.create('Ext.form.Panel', {
+            ]
+        });
+
+
+
+        var cassini_form = Ext.create('Ext.form.Panel', {
             frame: true,
             //title: 'Cassini to UTM',
-            width: 290,
+            width: 490,
             bodyPadding: 5,
 
             fieldDefaults: {
@@ -257,10 +380,10 @@ Ext.require(['*']);
 
         // form3
 
-        var formPanel3 = Ext.create('Ext.form.Panel', {
+        var geog_form = Ext.create('Ext.form.Panel', {
             frame: true,
             //title: 'Geographic to Cassini',
-            width: 290,
+            width: 490,
             bodyPadding: 5,
 
             fieldDefaults: {
@@ -329,66 +452,24 @@ Ext.require(['*']);
 
         var utm_panel = new Ext.Panel({
                 title: 'UTM to Cassini',
-                items:[formPanel]
+                //bodyStyle:'margin:10px',
+                bodyPadding: 5,
+                //padding: '10 0 10 0'
+                items:[utm_input, corner1_utm, corner2_utm, corner3_utm, corner4_utm, cassini_out]
             });
 
         var cassini_panel = new Ext.Panel({
                 title: 'Cassini to UTM',
-                items:[formPanel2]
+                items:[cassini_form]
             });
 
 
         var geog_panel = new Ext.Panel({
                 title: 'Geographic to Cassini',
-                items:[formPanel3]
+                items:[geog_form]
             });
 
-
-        SearchPanel = new Ext.Panel({
-            id: "searchpanelID",
-            layout: 'border',
-            region: 'west',
-            width:300,
-            minWidth:200,
-            height: 500, 
-            animate: true,
-            preventHeader: true,
-             hideCollapseTool: true,
-            collapsible: true,
-            split: true,
-            items: [
-                        
-                        {
-                            region: 'west',
-                            xtype: 'panel',
-                            width: 300,
-                            //minWidth: 200,
-                            //height: 150, 
-                            title: 'Convert Data',
-                            //bodyPadding: 10,
-                            layout:'accordion',
-                            //margin: 10,
-                            //contentEl: 'search-form'
-                            items: [utm_panel, cassini_panel, geog_panel]
-
-                        }/*,
-                        {
-                            region: 'south',
-                            xtype: 'panel',
-                            width: 300,
-                            minWidth: 200,
-                            height: 150, 
-                            title: 'Downloads',
-                            bodyPadding: 10,
-                            html: '<a href="#">PDF map</a><br>'+
-                            '<a href="#">JPG map</a><br>'+
-                            '<a href="'+vector_data+'</a><br>'+
-                            '<a href="'+raster_data+'</a>'
-
-                        }*/
-            ]
-        });
-
+     
         var viewport = Ext.create('Ext.Viewport', {
             id: 'border-example',
             layout: 'border',
@@ -403,14 +484,27 @@ Ext.require(['*']);
                     region: 'west',
                     xtype: 'panel',
                     layout:'border',
-                    width: 300,
-                    minWidth: 200,
+                    width: 500,
+                    minWidth: 400,
                     active:true,
                     collapsible: true,
                     preventHeader: true,
                     hideCollapseTool: true,
                     split: true,
-                    items: [SearchPanel//, LogoPanel
+                    items: [{
+                            region: 'west',
+                            xtype: 'panel',
+                            width: 500,
+                            //minWidth: 200,
+                            //height: 150, 
+                            title: 'Convert Data',
+                            //bodyPadding: 10,
+                            layout:'accordion',
+                            //margin: 10,
+                            //contentEl: 'search-form'
+                            items: [utm_panel, cassini_panel, geog_panel]
+
+                        }//, LogoPanel
                     ],
                     listeners: {
                         collapse: function() {
@@ -534,11 +628,5 @@ Ext.require(['*']);
         tbar.render('toolbar');
 
         
-        // get a reference to the HTML element with id "hideit" and add a click listener to it
-        /*Ext.get("hideit").on('click', function(){
-            // get a reference to the Panel that was created with id = 'west-panel'
-            var w = Ext.getCmp('west-panel');
-            // expand or collapse that Panel based on its collapsed property state
-            w.collapsed ? w.expand() : w.collapse();
-        }); */
+      
     });
