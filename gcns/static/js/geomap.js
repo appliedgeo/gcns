@@ -29,13 +29,15 @@
              var points = data.points;
 
              $.each(points, function (i, point){
-                  var label = point[0];
-                  var height = point[1];
-                  var lon = parseFloat(point[2]);
-                  var lat = parseFloat(point[3]);
+                  var pid = point[0];
+                  var label = point[1];
+                  var height = point[2];
+                  var lon = parseFloat(point[3]);
+                  var lat = parseFloat(point[4]);
 
                   var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
                                 '<b>ELEVATION:</b> ' + height + '<br>' + 
+                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>' + 
                                 '<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
                   
 
@@ -108,7 +110,7 @@
               transparent: true,
               format: 'image/png'
           }); 
-
+    /*
     var destroyed1 = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
               layers: 'gcns:destroyed1',
               transparent: true,
@@ -132,7 +134,7 @@
               transparent: true,
               format: 'image/png'
           }); 
-
+  */
 
    
 
@@ -146,11 +148,11 @@
       "SKPGEO": skp_points,
       "SKPGEO A": skpgeoa,
       "SKPGEO B": skpgeob,
-      "SKPGEO C": skpgeoc,
-      "DESTROYED 1": destroyed1,
+      "SKPGEO C": skpgeoc
+      /*"DESTROYED 1": destroyed1,
       "DESTROYED 2": destroyed2,
       "DESTROYED 3": destroyed3,
-      "DESTROYED 4": destroyed4
+      "DESTROYED 4": destroyed4*/
       
 
     };

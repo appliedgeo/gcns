@@ -18,5 +18,8 @@ from django.contrib import admin
 urlpatterns = [
 	url(r'^$', 'gcns.views.home', name='home'),
 	url(r'^skpgeo/$', 'gcns.views.skpgeo'),
+    url(r'^destroyed/$', 'gcns.views.destroyed'),
+	url(r'^utm/$', 'gcns.views.utm'),
+	url(r'^cassini/$', 'gcns.views.cassini'),
     url(r'^admin/', include(admin.site.urls)),
 ]
