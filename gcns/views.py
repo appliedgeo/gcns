@@ -12,32 +12,70 @@ def home(request):
 
 def skpgeo(request):
     # return skpgeo as json
+    skpgeo1 = []
+    skpgeoa = []
+    skpgeob = []
+    skpgeoc = []
+    destroyed1 = []
+    destroyed2 = []
+    destroyed3 = []
+    destroyed4 = []
+
+
     cur = connection.cursor()
 
-    cur.execute("""SELECT point, descrip, elevatio_1, xcoord, ycoord FROM skpgeo""")
-    points = []
+    # skpgeo
+    cur.execute("""SELECT point, descrip, elevatio_1, ST_X(geom), ST_Y(geom) FROM skpgeo""")
     for row in cur.fetchall():
-        points.append([row[0], row[1], row[2], row[3], row[4] ])
+        skpgeo1.append([row[0], row[1], row[2], row[3], row[4] ])
+
+    # skpgeo a
+    cur.execute("""SELECT point, descrip, elevation, ST_X(geom), ST_Y(geom) FROM skpgeoa""")
+    for row in cur.fetchall():
+        skpgeoa.append([row[0], row[1], row[2], row[3], row[4] ])
+
+    # skpgeo b
+    cur.execute("""SELECT point, descrip, elevation, ST_X(geom), ST_Y(geom) FROM skpgeob""")
+    for row in cur.fetchall():
+        skpgeob.append([row[0], row[1], row[2], row[3], row[4] ])
+
+    # skpgeo c
+    cur.execute("""SELECT point, descrip, elevation, ST_X(geom), ST_Y(geom) FROM skpgeoc""")
+    for row in cur.fetchall():
+        skpgeoc.append([row[0], row[1], row[2], row[3], row[4] ])
+
+    # destroyed 1
+    cur.execute("""SELECT point, heights_1, ST_X(geom), ST_Y(geom) FROM destroyed1""")
+    for row in cur.fetchall():
+        destroyed1.append([row[0], row[1], row[2], row[3] ])
+
+    # destroyed 2
+    cur.execute("""SELECT point, descriptio, ST_X(geom), ST_Y(geom) FROM destroyed2""")
+    for row in cur.fetchall():
+        destroyed2.append([row[0], row[1], row[2], row[3] ])
+
+    # destroyed 3
+    cur.execute("""SELECT point, descriptio, ST_X(geom), ST_Y(geom) FROM destroyed3""")
+    for row in cur.fetchall():
+        destroyed3.append([row[0], row[1], row[2], row[3] ])
+
+
+    # destroyed 4
+    cur.execute("""SELECT point, descriptio, ST_X(geom), ST_Y(geom) FROM destroyed4""")
+    for row in cur.fetchall():
+        destroyed4.append([row[0], row[1], row[2], row[3] ])
+
 
     points_json = {
-        'points': points
-    }
+        'skpgeo': skpgeo1,
+        'skpgeoa': skpgeoa,
+        'skpgeob': skpgeob,
+        'skpgeoc': skpgeoc,
+        'destroyed1': destroyed1,
+        'destroyed2': destroyed2,
+        'destroyed3': destroyed3,
+        'destroyed4': destroyed4
 
-    cur.close()
-
-    return JsonResponse(points_json)
-
-def destroyed(request):
-    # return destroyed as json
-    cur = connection.cursor()
-
-    cur.execute("""SELECT point, descrip, elevatio_1, xcoord, ycoord FROM destroyed1""")
-    points = []
-    for row in cur.fetchall():
-        points.append([row[0], row[1], row[2], row[3], row[4] ])
-
-    points_json = {
-        'points': points
     }
 
     cur.close()

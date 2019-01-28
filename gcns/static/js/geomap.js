@@ -15,9 +15,18 @@
       "Streetmap": osm
     };
 
+    // skpgeo
     var skp_points = L.layerGroup();
+    var skpgeoa = L.layerGroup();
+    var skpgeob = L.layerGroup();
+    var skpgeoc = L.layerGroup();
+    var destroyed1 = L.layerGroup();
+    var destroyed2 = L.layerGroup();
+    var destroyed3 = L.layerGroup();
+    var destroyed4 = L.layerGroup();
 
-          // load skp markers
+
+    // load skp markers
     $.ajax({
           type: "GET",
           contentType: "application/json",
@@ -26,9 +35,8 @@
           dataType: "json",
           success: function(data){
 
-             var points = data.points;
-
-             $.each(points, function (i, point){
+             var skpgeo1 = data.skpgeo;
+             $.each(skpgeo1, function (i, point){
                   var pid = point[0];
                   var label = point[1];
                   var height = point[2];
@@ -46,6 +54,148 @@
                   skpmarker.addTo(skp_points);
 
               });
+
+             var skp_geoa = data.skpgeoa;
+             $.each(skp_geoa, function (i, point){
+                  var pid = point[0];
+                  var label = point[1];
+                  var height = point[2];
+                  var lon = parseFloat(point[3]);
+                  var lat = parseFloat(point[4]);
+
+                  var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
+                                '<b>ELEVATION:</b> ' + height + '<br>' + 
+                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                //'<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
+                  
+
+                  var skpmarker = L.marker([lat, lon]).bindPopup(content);
+
+                  skpmarker.addTo(skpgeoa);
+
+              });
+
+             var skp_geob = data.skpgeob;
+             $.each(skp_geob, function (i, point){
+                  var pid = point[0];
+                  var label = point[1];
+                  var height = point[2];
+                  var lon = parseFloat(point[3]);
+                  var lat = parseFloat(point[4]);
+
+                  var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
+                                '<b>ELEVATION:</b> ' + height + '<br>' + 
+                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                //'<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
+                  
+
+                  var skpmarker = L.marker([lat, lon]).bindPopup(content);
+
+                  skpmarker.addTo(skpgeob);
+
+              });
+
+             var skp_geoc = data.skpgeoc;
+             $.each(skp_geoc, function (i, point){
+                  var pid = point[0];
+                  var label = point[1];
+                  var height = point[2];
+                  var lon = parseFloat(point[3]);
+                  var lat = parseFloat(point[4]);
+
+                  var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
+                                '<b>ELEVATION:</b> ' + height + '<br>' + 
+                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                //'<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
+                  
+
+                  var skpmarker = L.marker([lat, lon]).bindPopup(content);
+
+                  skpmarker.addTo(skpgeoc);
+
+              });
+
+             var destroyed_1 = data.destroyed1;
+             $.each(destroyed_1, function (i, point){
+                  var pid = point[0];
+                  var label = point[1];
+                  //var height = point[2];
+                  var lon = parseFloat(point[2]);
+                  var lat = parseFloat(point[3]);
+
+                  var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
+                                //'<b>ELEVATION:</b> ' + height + '<br>' + 
+                                //'<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                '<img src="/static/photos/'+label+'.jpg" height="240" width="280">';
+                  
+
+                  var skpmarker = L.marker([lat, lon]).bindPopup(content);
+
+                  skpmarker.addTo(destroyed1);
+
+              });
+
+             var destroyed_2 = data.destroyed2;
+             $.each(destroyed_2, function (i, point){
+                  var pid = point[0];
+                  var label = point[1];
+                  //var height = point[2];
+                  var lon = parseFloat(point[2]);
+                  var lat = parseFloat(point[3]);
+
+                  var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
+                                //'<b>ELEVATION:</b> ' + height + '<br>' + 
+                                //'<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                '<img src="/static/photos/'+label+'.jpg" height="240" width="280">';
+                  
+
+                  var skpmarker = L.marker([lat, lon]).bindPopup(content);
+
+                  skpmarker.addTo(destroyed2);
+
+              });
+
+             var destroyed_3 = data.destroyed3;
+             $.each(destroyed_3, function (i, point){
+                  var pid = point[0];
+                  var label = point[1];
+                  //var height = point[2];
+                  var lon = parseFloat(point[2]);
+                  var lat = parseFloat(point[3]);
+
+                  var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
+                                //'<b>ELEVATION:</b> ' + height + '<br>' + 
+                                //'<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                '<img src="/static/photos/'+label+'.jpg" height="240" width="280">';
+                  
+
+                  var skpmarker = L.marker([lat, lon]).bindPopup(content);
+
+                  skpmarker.addTo(destroyed3);
+
+              });
+
+             var destroyed_4 = data.destroyed4;
+             $.each(destroyed_4, function (i, point){
+                  var pid = point[0];
+                  var label = point[1];
+                  //var height = point[2];
+                  var lon = parseFloat(point[2]);
+                  var lat = parseFloat(point[3]);
+
+                  var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
+                                //'<b>ELEVATION:</b> ' + height + '<br>' + 
+                                //'<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                '<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
+                  
+
+                  var skpmarker = L.marker([lat, lon]).bindPopup(content);
+
+                  skpmarker.addTo(destroyed4);
+
+              });
+
+             
 
 
 
@@ -85,58 +235,7 @@
               format: 'image/png'
           }); 
 
-    /*
-    var skpgeo = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:skpgeo',
-              transparent: true,
-              format: 'image/png'
-          }); 
-    */
-
-    var skpgeoa = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:skpgeoa',
-              transparent: true,
-              format: 'image/png'
-          }); 
-
-    var skpgeob = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:skpgeob',
-              transparent: true,
-              format: 'image/png'
-          }); 
-
-    var skpgeoc = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:skpgeoc',
-              transparent: true,
-              format: 'image/png'
-          }); 
-    /*
-    var destroyed1 = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:destroyed1',
-              transparent: true,
-              format: 'image/png'
-          }); 
-
-    var destroyed2 = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:destroyed2',
-              transparent: true,
-              format: 'image/png'
-          }); 
-
-    var destroyed3 = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:destroyed3',
-              transparent: true,
-              format: 'image/png'
-          }); 
-
-    var destroyed4 = L.tileLayer.wms('http://45.79.11.62:8080/geoserver/wms', {
-              layers: 'gcns:destroyed4',
-              transparent: true,
-              format: 'image/png'
-          }); 
-  */
-
-   
+  
 
     //var overlays = L.layerGroup([all_countries, alltowns, counties, skpgeo, skpgeoa, skpgeob, skpgeoc]);
     var overlays = {
@@ -148,11 +247,11 @@
       "SKPGEO": skp_points,
       "SKPGEO A": skpgeoa,
       "SKPGEO B": skpgeob,
-      "SKPGEO C": skpgeoc
-      /*"DESTROYED 1": destroyed1,
+      "SKPGEO C": skpgeoc,
+      "DESTROYED 1": destroyed1,
       "DESTROYED 2": destroyed2,
       "DESTROYED 3": destroyed3,
-      "DESTROYED 4": destroyed4*/
+      "DESTROYED 4": destroyed4
       
 
     };
