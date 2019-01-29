@@ -14,13 +14,13 @@
       <div class="container">
         <div class="block-heading">
           <h2>Payment</h2>
-          <p>Choose Payment Method.</p>
+          <!--p>Choose Payment Method.</p-->
         </div>
         <form>
           <div class="products">
             <h3 class="title">Checkout</h3>
             <div class="item">
-              <span class="price">Ksh. 200</span>
+              <span class="price">Ksh 200</span>
               <p class="item-name">Geodetic Control</p>
               <p class="item-description">{{ skp_label }}</p>
             </div>
@@ -29,94 +29,48 @@
               <p class="item-name">Product 2</p>
               <p class="item-description">Lorem ipsum dolor sit amet</p>
             </div-->
-            <div class="total">Total<span class="price">Ksh. 200</span></div>
+            <div class="total">Total<span class="price">Ksh 200</span></div>
           </div>
           <hr>
      
         </form>
 
-        <div id="accordion" class="form-group col-sm-12">
-		  <div class="card">
-		    <div class="card-header" id="headingOne">
-		      <h5 class="mb-0">
-		        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		          MPESA
-		        </button>
-		      </h5>
-		    </div>
-
-		    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-		      <div class="card-body">
-		       	<ol>
-		       		<li>Go to M-PESA on your phone</li>
-		       		<li>Select Pay Bill option</li>
-		       		<li>Enter Business no. 200200</li>
-		       		<li>Enter Account no. <i>Your mobile number</i></li>
-		       		<li>Enter the Amount. KES 200</li>
-		       		<li>Enter your M-PESA PIN and Send</li>
-		       		<li>You will receive a confirmation SMS from MPESA</li>
-		       		<li>Enter your the Confirmation code and Mobile Phone Number Below</li>
-		       		<li>Ensure the details are correct Then Click 'Complete'</li>
-		       	</ol>
-		  
-				  <div class="form-group col-sm-12">
-				    <input type="text" class="form-control" id="mpesaphone" placeholder="Enter Phone Number">
-				  </div>
-				  <div class="form-group">
-				    <input type="text" class="form-control" id="mpesacode" placeholder="Enter Confirmation Code">
-				  </div>
-				  <button type="submit" class="btn btn-primary">Complete</button>
+        <form method="post" action="https://www.mobicardsystems.com/paynow">
+	
+			<!--Required Fields Below-->	
+			<input type="hidden" id="Mobicard_MerchantID" name="Mobicard_MerchantID" value="1594"> 
+			<input type="hidden" id="Mobicard_API_Key" name="Mobicard_API_Key" value="ZTRkYTI4MGQxNTI2ZDM4NjU0NjM0MDk4NTk2YTAzNGI3ZGVmMDE4OGU0MDU0In0=">
+			<input type="hidden" id="Mobicard_Payment_Set" name="Mobicard_Payment_Set" value="2"> 
+			<input type="hidden" id="Mobicard_Mode" name="Mobicard_Mode" value="TEST">
+			<!--input type="hidden" id="Mobicard_Transaction_Reference" name="Mobicard_Transaction_Reference" value="1234567890"--> 	
+																				
+			<!-- THE FIELDS BELOW ARE OPTIONAL, DEPENDING ON WHETHER THE MERCHANT WANTS THE USER TO INPUT 
+			THE DESCRIPTION, AMOUNT AND CURRENCY. IF THE MERCHANT NEEDS TO SEND THESE VALUES, THEN ALL THE THREE MUST BE SENT.
+			THE CURRENCY CAN BE EITHER USD OR KES WHILE THE AMOUNT MAY BE AN INTEGER OR WITH UPTO TWO DECIMAL PLACES
+			The TEST CARD NUMBER is 4242424242424242 . Use with any date and any 3-digit number for CVV.-->
+			
+			<!--Optional Fields-->								
+			<!--input type="hidden" id="Mobicard_Item_Description" name="Mobicard_Item_Description" value="TRANSACTION DESCRIPTION">
+			<input type="hidden" id="Mobicard_Order_Currency" name="Mobicard_Order_Currency" value="USD"> 
+			<input type="hidden" id="Mobicard_Order_Amount" name="Mobicard_Order_Amount" value="100"---> 
+			
+			<!--Extra Optional Fields-->
+			<!--input type="hidden" id="Mobicard_First_Name" name="Mobicard_First_Name" value="Test"> 
+			<input type="hidden" id="Mobicard_Last_Name" name="Mobicard_Last_Name" value="Client">    
+			<input type="hidden" id="Mobicard_Address" name ="Mobicard_Address" value="P.O BOX 36457">
+			<input type="hidden" id="Mobicard_Postal_Code" name ="Mobicard_Postal_Code" value="00800"> 
+			<input type="hidden" id="Mobicard_Country_Code" name ="Mobicard_Country_Code" value="KE">
+			<input type="hidden" id="Mobicard_Email" name ="Mobicard_Email" value="markmathenge@gmail.com"> 
+			<input type="hidden" id="Mobicard_Mobile_Number" name ="Mobicard_Mobile_Number" value="+254700123456"--> 
+																					
+			<button class="btn-lg btn-primary"><img src="https://www.mobicardsystems.com/images/paynow.png" width="130" height="35" /></button>
 				
-		      </div>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <div class="card-header" id="headingTwo">
-		      <h5 class="mb-0">
-		        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		          Airtel Money
-		        </button>
-		      </h5>
-		    </div>
-		    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-		      <div class="card-body">
-		        <ol>
-		        	<li>Go to Airtel Money on your phone</li>
-		        	<li>Select Pay Bill option</li>
-		        	<li>Select Other</li>
-		        	<li>Enter Business Name. 200200</li>
-		        	<li>Enter the Amount Ksh. KES 200</li>
-		        	<li>Enter your Airtel Money PIN and Send</li>
-		        	<li>Enter Account no. <i>Your mobile number</i></li>
-		        	<li>You will receive a confirmation SMS from Airtel Money</li>
-		        	<li>Enter your the Transaction code and Mobile Phone Number Below</li>
-		        	<li>Ensure the details are correct Then Click 'Complete'</li>
-		        </ol>
-		        <div class="form-group col-sm-12">
-				    <input type="text" class="form-control" id="airtelphone" placeholder="Enter Phone Number">
-				  </div>
-				  <div class="form-group">
-				    <input type="text" class="form-control" id="airtelcode" placeholder="Enter Transaction Code">
-				  </div>
-				  <button type="submit" class="btn btn-primary">Complete</button>
-		      </div>
-		    </div>
-		  </div>
-		  <!--div class="card">
-		    <div class="card-header" id="headingThree">
-		      <h5 class="mb-0">
-		        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		          Debit/Credit Card
-		        </button>
-		      </h5>
-		    </div>
-		    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-		      <div class="card-body">
-		        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 
-		      </div>
-		    </div>
-		  </div-->
-		</div>
+			<!--DONATE BUTTON-->
+			<!--button class="btn-lg btn-primary"><img src="https://www.mobicardsystems.com/images/donate.png" width="130" height="35" /></button-->
+												
+		</form>
+
+
 
 		
 

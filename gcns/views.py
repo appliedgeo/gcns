@@ -16,6 +16,8 @@ def payment(request, pid):
     }
     return render_to_response('payment.html', RequestContext(request, context_dict))
 
+def success(request):
+    return render_to_response('success.html')
 
 def skpgeo(request):
     # return skpgeo as json
