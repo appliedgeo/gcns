@@ -10,6 +10,13 @@ def home(request):
 	return render_to_response('app.html')
 
 
+def payment(request, pid):
+    context_dict = {
+        'skp_label': pid
+    }
+    return render_to_response('payment.html', RequestContext(request, context_dict))
+
+
 def skpgeo(request):
     # return skpgeo as json
     skpgeo1 = []

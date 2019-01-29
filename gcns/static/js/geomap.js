@@ -45,7 +45,7 @@
 
                   var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
                                 '<b>ELEVATION:</b> ' + height + '<br>' + 
-                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>' + 
+                                '<a target="_blank" href="/pay/' + label + '">PAY NOW</a><br>' + 
                                 '<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
                   
 
@@ -65,7 +65,7 @@
 
                   var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
                                 '<b>ELEVATION:</b> ' + height + '<br>' + 
-                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                '<a target="_blank" href="/pay/' + label + '">PAY NOW</a><br>'; 
                                 //'<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
                   
 
@@ -85,7 +85,7 @@
 
                   var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
                                 '<b>ELEVATION:</b> ' + height + '<br>' + 
-                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                '<a target="_blank" href="/pay/' + label + '">PAY NOW</a><br>'; 
                                 //'<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
                   
 
@@ -105,7 +105,7 @@
 
                   var content = '<b>DESCRIPTION:</b> ' + label + '<br>' + 
                                 '<b>ELEVATION:</b> ' + height + '<br>' + 
-                                '<a target="_blank" href="/pay/' + pid + '">PAY NOW</a><br>'; 
+                                '<a target="_blank" href="/pay/' + label + '">PAY NOW</a><br>'; 
                                 //'<img src="/static/photos/'+label+'.jpg" height="120" width="140">';
                   
 
