@@ -52,7 +52,7 @@ Ext.require(['*']);
             },
 
             items: [ {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'UTM(E)',
                 margin: "10 0 0 0",
@@ -61,7 +61,7 @@ Ext.require(['*']);
                 name:'utm_e_input',
                 allowBlank: false
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'UTM(N)',
                 margin: "10 0 0 0",
@@ -89,7 +89,7 @@ Ext.require(['*']);
             },
 
             items: [ {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Cassini(X)',
                 margin: "10 0 0 0",
@@ -98,7 +98,7 @@ Ext.require(['*']);
                 name:'out_cassini_x',
                 allowBlank: false
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Cassini(Y)',
                 margin: "10 0 0 0",
@@ -109,7 +109,12 @@ Ext.require(['*']);
             }],
             buttons: [
                         {
-                    text: 'Convert to Cassini'
+                    text: 'Convert to Cassini',
+                    handler: function(){
+                        //this.up('form').getForm().isValid();
+                        toCassini();
+                        
+                    }
                 },{
                     text: 'Clear'
                 }
@@ -133,14 +138,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '1_utm_e',
+                        id: '1_utm_e',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '1_cassini_x',
+                        id: '1_cassini_x',
                         anchor:'95%'
                     }]
                 },{
@@ -148,14 +155,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '1_utm_n',
+                        id: '1_utm_n',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '1_cassini_y',
+                        id: '1_cassini_y',
                         anchor:'95%'
                         }]
                     }]
@@ -180,14 +189,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '2_utm_e',
+                        id: '2_utm_e',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '2_cassini_x',
+                        id: '2_cassini_x',
                         anchor:'95%'
                     }]
                 },{
@@ -195,14 +206,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '2_utm_n',
+                        id: '2_utm_n',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '2_cassini_y',
+                        id: '2_cassini_y',
                         anchor:'95%'
                         }]
                     }]
@@ -228,14 +241,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '3_utm_e',
+                        id: '3_utm_e',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '3_cassini_x',
+                        id: '3_cassini_x',
                         anchor:'95%'
                     }]
                 },{
@@ -243,14 +258,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '3_utm_n',
+                        id: '3_utm_n',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '3_cassini_y',
+                        id: '3_cassini_y',
                         anchor:'95%'
                         }]
                     }]
@@ -276,14 +293,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '4_utm_e',
+                        id: '4_utm_e',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '4_cassini_x',
+                        id: '4_cassini_x',
                         anchor:'95%'
                     }]
                 },{
@@ -291,14 +310,16 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '4_utm_n',
+                        id: '4_utm_n',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '4_cassini_y',
+                        id: '4_cassini_y',
                         anchor:'95%'
                         }]
                     }]
@@ -323,7 +344,7 @@ Ext.require(['*']);
             },
 
             items: [{
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Cassini(X)',
                 margin: "10 0 0 0",
@@ -332,7 +353,7 @@ Ext.require(['*']);
                 name:'cassini_x_input',
                 allowBlank: false
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Cassini(Y)',
                 margin: "10 0 0 0",
@@ -372,7 +393,7 @@ Ext.require(['*']);
             },
 
             items: [{
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'UTM(E)',
                 margin: "10 0 0 0",
@@ -381,7 +402,7 @@ Ext.require(['*']);
                 name:'utm_e_out',
                 allowBlank: false
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'UTM(N)',
                 margin: "10 0 0 0",
@@ -394,6 +415,7 @@ Ext.require(['*']);
                 text: 'Convert to UTM',
                 handler: function(){
                     this.up('form').getForm().isValid();
+
                     
                 }
             },{
@@ -423,12 +445,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '1_utm_eb',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '1_cassini_xb',
                         anchor:'95%'
@@ -438,12 +460,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '1_utm_nb',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '1_cassini_yb',
                         anchor:'95%'
@@ -470,12 +492,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '2_utm_eb',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '2_cassini_xb',
                         anchor:'95%'
@@ -485,12 +507,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '2_utm_nb',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '2_cassini_yb',
                         anchor:'95%'
@@ -518,12 +540,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '3_utm_eb',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '3_cassini_xb',
                         anchor:'95%'
@@ -533,12 +555,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '3_utm_nb',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '3_cassini_yb',
                         anchor:'95%'
@@ -566,12 +588,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '4_utm_eb',
                         anchor:'95%'
                     }, {
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '4_cassini_xb',
                         anchor:'95%'
@@ -581,12 +603,12 @@ Ext.require(['*']);
                     layout: 'form',
                     border:false,
                     items: [{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '4_utm_nb',
                         anchor:'95%'
                     },{
-                        xtype:'textfield',
+                        xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '4_cassini_yb',
                         anchor:'95%'
@@ -611,7 +633,7 @@ Ext.require(['*']);
             },
 
             items: [ {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Latitude',
                 margin: "10 0 0 0",
@@ -620,7 +642,7 @@ Ext.require(['*']);
                 name:'latitude',
                 allowBlank: false
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Longitude',
                 margin: "10 0 0 0",
@@ -629,7 +651,7 @@ Ext.require(['*']);
                 name:'longitude',
                 allowBlank: false
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Cassini(X)',
                 margin: "10 0 0 0",
@@ -638,7 +660,7 @@ Ext.require(['*']);
                 name:'cassini_x3',
                 allowBlank: false
             }, {
-                xtype: 'textfield',
+                xtype: 'numberfield',
                 //anchor: '100%',            
                 fieldLabel: 'Cassini(Y)',
                 margin: "10 0 0 0",

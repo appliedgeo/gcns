@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.db import connection
 
 import json
+import numpy as np
 
 
 def home(request):
@@ -96,7 +97,84 @@ def utm(request):
     # run utm to cassini conversion
     utm_data = json.loads(request.body)
 
+    utm_e = utm_data['utm_e']
+    utm_n = utm_data['utm_n']
+
+    utm_x1 = utm_data['utm_x1']
+    utm_y1 = utm_data['utm_y1']
+
+    utm_x2 = utm_data['utm_x2']
+    utm_y2 = utm_data['utm_y2']
+
+    utm_x3 = utm_data['utm_x3']
+    utm_y3 = utm_data['utm_y3']
+
+    utm_x4 = utm_data['utm_x4']
+    utm_y4 = utm_data['utm_y4']
+
+    cassini_x1 = utm_data['cassini_x1']
+    cassini_y1 = utm_data['cassini_y1']
+
+    cassini_x2 = utm_data['cassini_x2']
+    cassini_y2 = utm_data['cassini_y2']
+
+    cassini_x3 = utm_data['cassini_x3']
+    cassini_y3 = utm_data['cassini_y3']
+
+    cassini_x4 = utm_data['cassini_x4']
+    cassini_y4 = utm_data['cassini_y4']
+
+    # matrices
+    A = np.array([
+        [utm_x1, -utm_y1, 1, 0],
+        [utm_y1, utm_x1, 0, 1],
+        [utm_x2, -utm_y2, 1, 0],
+        [utm_y2, utm_x2, 0, 1],
+        [utm_x3, -utm_y3, 1, 0],
+        [utm_y3, utm_x3, 0, 1],
+        [utm_x4, -utm_y4, 1, 0],
+        [utm_y4, utm_x4, 0, 1]
+
+
+        ])
+
+    B = np.array([
+        [cassini_x1],
+        [cassini_y1],
+        [cassini_x2],
+        [cassini_y2],
+        [cassini_x3],
+        [cassini_y3],
+        [cassini_x4],
+        [cassini_y4],
+
+        ])
+
+
+    # matrix computation
+    Atrans = A.transpose()
+
+    C = Atrans.dot(A)
+
+    D = np.linalg.inv(C)
+
+    E = Atrans.dot(B)
+
+    F = D.dot(E)
+
+    a = F[0,0]
+    b = F[1,0]
+    Tx = F[2,0]
+    Ty = F[3,0]
+
+    easting = a*utm_e - b*utm_n + Tx
+    northing = b*utm_e + a*utm_n + Ty
+
+
+
     cassini_results = {
+        'easting': easting,
+        'northing': northing
 
     }
 

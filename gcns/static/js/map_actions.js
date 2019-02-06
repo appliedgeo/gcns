@@ -20,6 +20,7 @@ function search_map(year, month, day){
 
 
 function toCassini(){
+	//alert('Running converter..');
 
 	// get utm values
 	var utm_e_input = Ext.getCmp('utm_e_input').getValue();
@@ -52,28 +53,28 @@ function toCassini(){
 
 
 	var utm_data = {
-		"utm_e_input": utm_e_input,
-		"utm_n_input": utm_n_input,
+		"utm_e": utm_e_input,
+		"utm_n": utm_n_input,
 
-		"utm_e_1": utm_e_1,
-		"cassini_x_1": cassini_x_1,
-		"utm_n_1": utm_n_1,
-		"cassini_y_1": cassini_y_1,
+		"utm_x1": utm_e_1,
+		"cassini_x1": cassini_x_1,
+		"utm_y1": utm_n_1,
+		"cassini_y1": cassini_y_1,
 
-		"utm_e_2": utm_e_2,
-		"cassini_x_2": cassini_x_2,
-		"utm_n_2": utm_n_2,
-		"cassini_y_2": cassini_y_2,
+		"utm_x2": utm_e_2,
+		"cassini_x2": cassini_x_2,
+		"utm_y2": utm_n_2,
+		"cassini_y2": cassini_y_2,
 
-		"utm_e_3": utm_e_3,
-		"cassini_x_3": cassini_x_3,
-		"utm_n_3": utm_n_3,
-		"cassini_y_3": cassini_y_3,
+		"utm_x3": utm_e_3,
+		"cassini_x3": cassini_x_3,
+		"utm_y3": utm_n_3,
+		"cassini_y3": cassini_y_3,
 
-		"utm_e_4": utm_e_4,
-		"cassini_x_4": cassini_x_4,
-		"utm_n_4": utm_n_4,
-		"cassini_y_4": cassini_y_4
+		"utm_x4": utm_e_4,
+		"cassini_x4": cassini_x_4,
+		"utm_y4": utm_n_4,
+		"cassini_y4": cassini_y_4
 
 	};
 
@@ -86,6 +87,12 @@ function toCassini(){
 		dataType: "json",
 		data: JSON.stringify(utm_data),
 		success: function(data){
+
+			console.log(data.easting);
+			console.log(data.northing);
+
+			Ext.getCmp('out_cassini_x').setValue(data.easting);
+			Ext.getCmp('out_cassini_y').setValue(data.northing);
 			
 		}
 
