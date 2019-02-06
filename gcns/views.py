@@ -185,7 +185,82 @@ def cassini(request):
     # run cassini to utm conversion
     cassini_data = json.loads(request.body)
 
+    cassini_e = cassini_data['cassini_e']
+    cassini_n = cassini_data['cassini_n']
+
+    utm_x1 = cassini_data['utm_x1']
+    utm_y1 = cassini_data['utm_y1']
+
+    utm_x2 = cassini_data['utm_x2']
+    utm_y2 = cassini_data['utm_y2']
+
+    utm_x3 = cassini_data['utm_x3']
+    utm_y3 = cassini_data['utm_y3']
+
+    utm_x4 = cassini_data['utm_x4']
+    utm_y4 = cassini_data['utm_y4']
+
+    cassini_x1 = cassini_data['cassini_x1']
+    cassini_y1 = cassini_data['cassini_y1']
+
+    cassini_x2 = cassini_data['cassini_x2']
+    cassini_y2 = cassini_data['cassini_y2']
+
+    cassini_x3 = cassini_data['cassini_x3']
+    cassini_y3 = cassini_data['cassini_y3']
+
+    cassini_x4 = cassini_data['cassini_x4']
+    cassini_y4 = cassini_data['cassini_y4']
+
+    # matrices
+    A = np.array([
+        [cassini_x1, -cassini_y1, 1, 0],
+        [cassini_y1, cassini_x1, 0, 1],
+        [cassini_x2, -cassini_y2, 1, 0],
+        [cassini_y2, cassini_x2, 0, 1],
+        [cassini_x3, -cassini_y3, 1, 0],
+        [cassini_y3, cassini_x3, 0, 1],
+        [cassini_x4, -cassini_y4, 1, 0],
+        [cassini_y4, cassini_x4, 0, 1]
+
+
+        ])
+
+    B = np.array([
+        [utm_x1],
+        [utm_y1],
+        [utm_x2],
+        [utm_y2],
+        [utm_x3],
+        [utm_y3],
+        [utm_x4],
+        [utm_y4],
+
+        ])
+
+
+    # matrix computation
+    Atrans = A.transpose()
+
+    C = Atrans.dot(A)
+
+    D = np.linalg.inv(C)
+
+    E = Atrans.dot(B)
+
+    F = D.dot(E)
+
+    a = F[0,0]
+    b = F[1,0]
+    Tx = F[2,0]
+    Ty = F[3,0]
+
+    easting = a*cassini_e - b*cassini_n + Tx
+    northing = b*cassini_e + a*cassini_n + Ty
+
     utm_results = {
+        'easting': easting,
+        'northing': northing
 
     }
 

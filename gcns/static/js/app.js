@@ -362,10 +362,11 @@ Ext.require(['*']);
                 name:'cassini_y_input',
                 allowBlank: false
             }],
-            buttons: [{
+            buttons: [/*{
                 text: 'Convert',
                 handler: function(){
-                    this.up('form').getForm().isValid();
+                    //this.up('form').getForm().isValid();
+
                     
                 }
             },{
@@ -375,7 +376,7 @@ Ext.require(['*']);
 
                 }
             }
-
+            */
             ]
         });
 
@@ -414,8 +415,8 @@ Ext.require(['*']);
             buttons: [{
                 text: 'Convert to UTM',
                 handler: function(){
-                    this.up('form').getForm().isValid();
-
+                    //this.up('form').getForm().isValid();
+                    toUTM();
                     
                 }
             },{
@@ -448,11 +449,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '1_utm_eb',
+                        id: '1_utm_eb',
                         anchor:'95%'
                     }, {
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '1_cassini_xb',
+                        id: '1_cassini_xb',
                         anchor:'95%'
                     }]
                 },{
@@ -463,11 +466,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '1_utm_nb',
+                        id: '1_utm_nb',
                         anchor:'95%'
                     },{
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '1_cassini_yb',
+                        id: '1_cassini_yb',
                         anchor:'95%'
                         }]
                     }]
@@ -495,11 +500,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '2_utm_eb',
+                        id: '2_utm_eb',
                         anchor:'95%'
                     }, {
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '2_cassini_xb',
+                        id: '2_cassini_xb',
                         anchor:'95%'
                     }]
                 },{
@@ -510,11 +517,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '2_utm_nb',
+                        id: '2_utm_nb',
                         anchor:'95%'
                     },{
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '2_cassini_yb',
+                        id: '2_cassini_yb',
                         anchor:'95%'
                         }]
                     }]
@@ -543,11 +552,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '3_utm_eb',
+                        id: '3_utm_eb',
                         anchor:'95%'
                     }, {
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '3_cassini_xb',
+                        id: '3_cassini_xb',
                         anchor:'95%'
                     }]
                 },{
@@ -558,11 +569,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '3_utm_nb',
+                        id: '3_utm_nb',
                         anchor:'95%'
                     },{
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '3_cassini_yb',
+                        id: '3_cassini_yb',
                         anchor:'95%'
                         }]
                     }]
@@ -591,11 +604,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (E)',
                         name: '4_utm_eb',
+                        id: '4_utm_eb',
                         anchor:'95%'
                     }, {
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (X)',
                         name: '4_cassini_xb',
+                        id: '4_cassini_xb',
                         anchor:'95%'
                     }]
                 },{
@@ -606,11 +621,13 @@ Ext.require(['*']);
                         xtype:'numberfield',
                         fieldLabel: 'UTM (N)',
                         name: '4_utm_nb',
+                        id: '4_utm_nb',
                         anchor:'95%'
                     },{
                         xtype:'numberfield',
                         fieldLabel: 'CASSINI (Y)',
                         name: '4_cassini_yb',
+                        id: '4_cassini_yb',
                         anchor:'95%'
                         }]
                     }]
