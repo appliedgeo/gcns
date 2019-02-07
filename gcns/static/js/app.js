@@ -59,7 +59,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'utm_e_input',
                 name:'utm_e_input',
-                allowBlank: false
+                allowBlank: true
             }, {
                 xtype: 'numberfield',
                 //anchor: '100%',            
@@ -68,7 +68,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'utm_n_input',
                 name:'utm_n_input',
-                allowBlank: false
+                allowBlank: true
             }],
             buttons: [
 
@@ -96,7 +96,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'out_cassini_x',
                 name:'out_cassini_x',
-                allowBlank: false
+                allowBlank: true
             }, {
                 xtype: 'numberfield',
                 //anchor: '100%',            
@@ -105,7 +105,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'out_cassini_y',
                 name:'out_cassini_y',
-                allowBlank: false
+                allowBlank: true
             }],
             buttons: [
                         {
@@ -351,7 +351,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'cassini_x_input',
                 name:'cassini_x_input',
-                allowBlank: false
+                allowBlank: true
             }, {
                 xtype: 'numberfield',
                 //anchor: '100%',            
@@ -360,7 +360,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'cassini_y_input',
                 name:'cassini_y_input',
-                allowBlank: false
+                allowBlank: true
             }],
             buttons: [/*{
                 text: 'Convert',
@@ -401,7 +401,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'utm_e_out',
                 name:'utm_e_out',
-                allowBlank: false
+                allowBlank: true
             }, {
                 xtype: 'numberfield',
                 //anchor: '100%',            
@@ -410,7 +410,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'utm_n_out',
                 name:'utm_n_out',
-                allowBlank: false
+                allowBlank: true
             }],
             buttons: [{
                 text: 'Convert to UTM',
@@ -657,7 +657,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'latitude',
                 name:'latitude',
-                allowBlank: false
+                allowBlank: true
             }, {
                 xtype: 'numberfield',
                 //anchor: '100%',            
@@ -666,7 +666,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'longitude',
                 name:'longitude',
-                allowBlank: false
+                allowBlank: true
             }, {
                 xtype: 'numberfield',
                 //anchor: '100%',            
@@ -675,7 +675,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'cassini_x3',
                 name:'cassini_x3',
-                allowBlank: false
+                allowBlank: true
             }, {
                 xtype: 'numberfield',
                 //anchor: '100%',            
@@ -684,7 +684,7 @@ Ext.require(['*']);
                 //width: 310,
                 id: 'cassini_y3',
                 name:'cassini_y3',
-                allowBlank: false
+                allowBlank: true
             }],
             buttons: [{
                 text: 'Convert',
