@@ -394,7 +394,7 @@ Ext.require(['*']);
             },
 
             items: [{
-                xtype: 'numberfield',
+                xtype: 'textfield',
                 //anchor: '100%',            
                 fieldLabel: 'UTM(E)',
                 margin: "10 0 0 0",
@@ -403,7 +403,7 @@ Ext.require(['*']);
                 name:'utm_e_out',
                 allowBlank: true
             }, {
-                xtype: 'numberfield',
+                xtype: 'textfield',
                 //anchor: '100%',            
                 fieldLabel: 'UTM(N)',
                 margin: "10 0 0 0",
